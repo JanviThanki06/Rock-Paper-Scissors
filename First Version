@@ -1,0 +1,57 @@
+import random
+import sys
+
+def makeYourChoice():
+    print "Press the key as per your choice: "
+    print "R - Rock"
+    print "P - Paper"
+    print "S - Scissors"
+    print "Q - Quit"
+
+    userChoice = raw_input("Enter your choice: ").lower()
+
+    if userChoice == "r":
+        return "Rock"
+    if userChoice == "p":
+        return "Paper"
+    if userChoice == "s":
+        return "Scissors"
+    if userChoice == "q":
+        sys.exit(0)
+    else:
+        makeYourChoice()
+
+def computerRandom():
+    options = ["Rock","Paper","Scissors"]
+    randomChoice = random.randint(0,2)
+    return options[randomChoice]
+
+def comparison(humanChoice, computerChoice):
+    if humanChoice == computerChoice:
+        return "Draw"
+    if humanChoice == "Rock" and computerChoice == "Paper":
+        return "Computer Wins"
+    if humanChoice == "Paper" and computerChoice == "Scissors":
+        return "Computer Wins!"
+    if humanChoice == "Scissors" and computerChoice == "Rock":
+        return "Computer Wins"
+    else: return "You Win"
+
+
+while True:
+    humanChoice = makeYourChoice()
+    computerChoice = computerRandom()
+    
+    print "Your choice", humanChoice
+    print "Computer choice", computerChoice
+    
+    result = comparison(humanChoice, computerChoice)
+
+    if result == 'Draw':
+        print "Its a draw"
+    elif result == 'Computer Wins':
+        print "Computer Wins. Try Again"
+    else:
+        print "Hurray! You win."
+
+    print " "
